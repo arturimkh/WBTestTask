@@ -19,8 +19,6 @@ final class WBListRegionsCollectionViewCellViewModel{
             completion(.failure(URLError(.badURL)))
             return
         }
-        
         ImageLoader.shared.downloadImage(url, completion: completion)
-        
     }
 }

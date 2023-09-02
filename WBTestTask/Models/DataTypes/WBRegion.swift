@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Brand
-struct WBBrandModel: Codable {
+struct WBRegion: Codable {
     let brandID, title: String
     let thumbUrls: [String]
     let tagIDS: [String]

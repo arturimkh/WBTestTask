@@ -8,6 +8,6 @@
 import Foundation
 
 struct WBGetAllBrandsResponse: Codable {
-    let brands: [WBBrandModel]
+    let brands: [WBRegion]
 }
 

@@ -10,14 +10,14 @@ import UIKit
 
 protocol WBListRegionsViewViewModelDelegate: AnyObject{
     func didLoadInitialRegions()
-    func didSelectRegion(_ region: WBBrandModel)
+    func didSelectRegion(_ region: WBRegion)
 }
 
 final class WBListRegionsViewViewModel: NSObject{
 
     weak var delegate: WBListRegionsViewViewModelDelegate?
     
-    private var regions:[WBBrandModel] = [] {
+    private var regions:[WBRegion] = [] {
         didSet{
             for region in regions {
                 let viewModel = WBListRegionsCollectionViewCellViewModel(
@@ -46,7 +46,9 @@ final class WBListRegionsViewViewModel: NSObject{
         }
     }
 }
-//MARK: реализация CollectionViewDelegate
+
+//MARK: CollectionViewDelegate
+
 extension WBListRegionsViewViewModel: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -54,7 +56,8 @@ extension WBListRegionsViewViewModel: UICollectionViewDelegate{
         delegate?.didSelectRegion(region)
     }
 }
-//MARK: реализация CollectionViewDelegate
+
+//MARK: CollectionViewDataSource
 
 extension WBListRegionsViewViewModel: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,6 +74,8 @@ extension WBListRegionsViewViewModel: UICollectionViewDataSource{
         return cell
     }
 }
+
+//MARK: CollectionViewDataSource
 
 extension WBListRegionsViewViewModel: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

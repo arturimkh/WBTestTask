@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181147662AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181147652AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift */; };
+		1811476A2AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */; };
 		182330D62AA0B72C0019C065 /* WBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D52AA0B72C0019C065 /* WBRequest.swift */; };
 		182330D82AA0B7360019C065 /* WBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D72AA0B7360019C065 /* WBEndpoint.swift */; };
 		182330DA2AA0B7420019C065 /* WBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D92AA0B7420019C065 /* WBService.swift */; };
 		182330DC2AA0B9080019C065 /* WBListRegionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330DB2AA0B9080019C065 /* WBListRegionsView.swift */; };
 		182330DE2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330DD2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift */; };
 		182330E02AA0BE0C0019C065 /* WBGetAllBrandsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330DF2AA0BE0C0019C065 /* WBGetAllBrandsResponse.swift */; };
-		182330E22AA0BF550019C065 /* WBBrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330E12AA0BF550019C065 /* WBBrandModel.swift */; };
+		182330E22AA0BF550019C065 /* WBRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330E12AA0BF550019C065 /* WBRegion.swift */; };
 		182330E62AA107BA0019C065 /* WBListRegionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330E52AA107BA0019C065 /* WBListRegionsCollectionViewCell.swift */; };
 		182330E82AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330E72AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift */; };
 		182330EA2AA1E22F0019C065 /* WBRegionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330E92AA1E22F0019C065 /* WBRegionDetailViewController.swift */; };
@@ -28,13 +30,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181147652AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegionPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegionPhotoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		182330D52AA0B72C0019C065 /* WBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRequest.swift; sourceTree = "<group>"; };
 		182330D72AA0B7360019C065 /* WBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEndpoint.swift; sourceTree = "<group>"; };
 		182330D92AA0B7420019C065 /* WBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBService.swift; sourceTree = "<group>"; };
 		182330DB2AA0B9080019C065 /* WBListRegionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBListRegionsView.swift; sourceTree = "<group>"; };
 		182330DD2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBListRegionsViewViewModel.swift; sourceTree = "<group>"; };
 		182330DF2AA0BE0C0019C065 /* WBGetAllBrandsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBGetAllBrandsResponse.swift; sourceTree = "<group>"; };
-		182330E12AA0BF550019C065 /* WBBrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBBrandModel.swift; sourceTree = "<group>"; };
+		182330E12AA0BF550019C065 /* WBRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegion.swift; sourceTree = "<group>"; };
 		182330E52AA107BA0019C065 /* WBListRegionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBListRegionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		182330E72AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBListRegionsCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		182330E92AA1E22F0019C065 /* WBRegionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegionDetailViewController.swift; sourceTree = "<group>"; };
@@ -61,10 +65,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181147632AA32EF4006A97B3 /* RegionsList */ = {
+			isa = PBXGroup;
+			children = (
+				182330DB2AA0B9080019C065 /* WBListRegionsView.swift */,
+				182330E52AA107BA0019C065 /* WBListRegionsCollectionViewCell.swift */,
+			);
+			path = RegionsList;
+			sourceTree = "<group>";
+		};
+		181147642AA32F07006A97B3 /* RegionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				182330EB2AA1E5060019C065 /* WBRegionDetailView.swift */,
+				181147652AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift */,
+			);
+			path = RegionDetail;
+			sourceTree = "<group>";
+		};
+		181147672AA3A50A006A97B3 /* RegionList */ = {
+			isa = PBXGroup;
+			children = (
+				182330DD2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift */,
+				182330E72AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift */,
+			);
+			path = RegionList;
+			sourceTree = "<group>";
+		};
+		181147682AA3A516006A97B3 /* RegionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				182330ED2AA1E5110019C065 /* WBRegionDetailViewViewModel.swift */,
+				181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */,
+			);
+			path = RegionDetail;
+			sourceTree = "<group>";
+		};
 		182330E32AA0C2610019C065 /* DataTypes */ = {
 			isa = PBXGroup;
 			children = (
-				182330E12AA0BF550019C065 /* WBBrandModel.swift */,
+				182330E12AA0BF550019C065 /* WBRegion.swift */,
 			);
 			path = DataTypes;
 			sourceTree = "<group>";
@@ -131,9 +171,8 @@
 		186D4CFD2AA0B5AB00596161 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				182330DB2AA0B9080019C065 /* WBListRegionsView.swift */,
-				182330E52AA107BA0019C065 /* WBListRegionsCollectionViewCell.swift */,
-				182330EB2AA1E5060019C065 /* WBRegionDetailView.swift */,
+				181147632AA32EF4006A97B3 /* RegionsList */,
+				181147642AA32F07006A97B3 /* RegionDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,9 +180,8 @@
 		186D4CFE2AA0B5B300596161 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				182330DD2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift */,
-				182330E72AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift */,
-				182330ED2AA1E5110019C065 /* WBRegionDetailViewViewModel.swift */,
+				181147672AA3A50A006A97B3 /* RegionList */,
+				181147682AA3A516006A97B3 /* RegionDetail */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -245,6 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1811476A2AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift in Sources */,
+				181147662AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift in Sources */,
 				182330EC2AA1E5060019C065 /* WBRegionDetailView.swift in Sources */,
 				182330E82AA108D40019C065 /* WBListRegionsCollectionViewCellViewModel.swift in Sources */,
 				182330DC2AA0B9080019C065 /* WBListRegionsView.swift in Sources */,
@@ -258,7 +298,7 @@
 				182330DE2AA0B94D0019C065 /* WBListRegionsViewViewModel.swift in Sources */,
 				186D4CE82AA0B45E00596161 /* AppDelegate.swift in Sources */,
 				182330DA2AA0B7420019C065 /* WBService.swift in Sources */,
-				182330E22AA0BF550019C065 /* WBBrandModel.swift in Sources */,
+				182330E22AA0BF550019C065 /* WBRegion.swift in Sources */,
 				186D4CEA2AA0B45E00596161 /* SceneDelegate.swift in Sources */,
 				182330EE2AA1E5110019C065 /* WBRegionDetailViewViewModel.swift in Sources */,
 			);

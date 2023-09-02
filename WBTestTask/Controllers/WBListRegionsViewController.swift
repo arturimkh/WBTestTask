@@ -32,7 +32,7 @@ final class WBListRegionsViewController: UIViewController {
 }
 extension WBListRegionsViewController:WBListRegionsViewDelegate{
     
-    func wbListRegionsView(_ listRegionsView: WBListRegionsView, didSelectRegion region: WBBrandModel) {
+    func wbListRegionsView(_ listRegionsView: WBListRegionsView, didSelectRegion region: WBRegion) {
         //opens screen with detail information
         let viewModel = WBRegionDetailViewViewModel(region: region)
         let detailVC = WBRegionDetailViewController(viewModel: viewModel)

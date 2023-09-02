@@ -11,7 +11,7 @@ import UIKit
 protocol WBListRegionsViewDelegate: AnyObject{
     func wbListRegionsView(
         _ listRegionsView: WBListRegionsView,
-        didSelectRegion region: WBBrandModel
+        didSelectRegion region: WBRegion
     )
 }
 class WBListRegionsView: UIView {
@@ -69,13 +69,15 @@ class WBListRegionsView: UIView {
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
     }
-    
 }
 extension WBListRegionsView: WBListRegionsViewViewModelDelegate{
-    func didSelectRegion(_ region: WBBrandModel) {
+    
+    /// after selection of single region, went to detail screen
+    /// - Parameter region: Model of region
+    func didSelectRegion(_ region: WBRegion) {
         delegate?.wbListRegionsView(self, didSelectRegion: region)
     }
-    
+    ///function to stop spinner and show regions
     func didLoadInitialRegions() {
         spinner.stopAnimating()
         collectionView.isHidden = false
