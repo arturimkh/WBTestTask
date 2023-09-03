@@ -9,6 +9,7 @@ import Foundation
 final class WBListRegionsCollectionViewCellViewModel{
     public let regionName:String
     private let regionImageUrl:URL?
+    
     init(regionName:String,regionImageUrl:URL?){
         self.regionName = regionName
         self.regionImageUrl = regionImageUrl

@@ -11,6 +11,7 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentfier = "WBListRegionsCollectionViewCell"
     
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -18,6 +19,7 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -25,6 +27,17 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 18,weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let likedButton: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        return button
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,21 +53,49 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
     private func addConstraints(){
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
+        contentView.addSubview(likedButton)
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: 50),
-            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
-            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            
-
-            imageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor,constant: -5),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 200),
+            
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
+            nameLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            likedButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            likedButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            likedButton.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            likedButton.rightAnchor.constraint(equalTo: contentView.rightAnchor)
 
         ])
     }
-    
+    @objc
+    private func didTapButton(){
+        guard let labelText = nameLabel.text else {return}
+        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
+        switch flag{
+        case true:
+            likedButton.setTitle("Не понравилось", for: .normal)
+            MyUserDefaultsManager.shared.saveData(key: labelText, value: false)
+        case false:
+            likedButton.setTitle("Понравилось", for: .normal)
+            MyUserDefaultsManager.shared.saveData(key: labelText, value: true)
+        }
+    }
+    public func isLiked(){
+        guard let labelText = nameLabel.text else {return}
+        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
+        switch flag{
+        case true:
+            likedButton.setTitle("Понравилось", for: .normal)
+        case false:
+            likedButton.setTitle("Не понравилось", for: .normal)
+        }
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil

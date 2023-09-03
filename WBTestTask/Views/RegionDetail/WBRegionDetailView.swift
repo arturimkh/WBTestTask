@@ -29,10 +29,16 @@ final class WBRegionDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-//    private let likedButton: UIButton = {
-//       let button = UIButton()
-//        return
-//    }()
+    private let likedButton: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setTitle("Не понравилось", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
     init(frame: CGRect, viewModel: WBRegionDetailViewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
@@ -44,6 +50,7 @@ final class WBRegionDetailView: UIView {
         addSubview(spinner)
         addSubview(collectionView)
         addSubview(viewsLabel)
+        addSubview(likedButton)
         
         addConstraints()
         setUpCollectionView()
@@ -80,6 +87,11 @@ final class WBRegionDetailView: UIView {
             viewsLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor,constant: 10),
             viewsLabel.leftAnchor.constraint(equalTo: leftAnchor),
             viewsLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            
+            likedButton.topAnchor.constraint(equalTo: viewsLabel.bottomAnchor,constant: 20),
+            likedButton.leftAnchor.constraint(equalTo: leftAnchor,constant: 30),
+            likedButton.rightAnchor.constraint(equalTo: rightAnchor,constant: -30),
+            likedButton.heightAnchor.constraint(equalToConstant: 50)
 
         ])
     }

@@ -68,7 +68,6 @@ extension WBListRegionsViewViewModel: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WBListRegionsCollectionViewCell.cellIdentfier, for: indexPath) as? WBListRegionsCollectionViewCell else {
             fatalError("unsupported cell")
         }
-        
         cell.configure(with: cellViewModels[indexPath.row])
         
         return cell
@@ -81,6 +80,6 @@ extension WBListRegionsViewViewModel: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = UIScreen.main.bounds
         let width = (bounds.width-30)/2
-        return CGSize(width: width, height: width+25)
+        return CGSize(width: width, height: width+100)
     }
 }
