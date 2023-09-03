@@ -31,6 +31,7 @@ final class WBListRegionsViewViewModel: NSObject{
     
     private var cellViewModels: [WBListRegionsCollectionViewCellViewModel] = []
     
+    /// fetching all regions
     public func fetchRegions(){
         WBService.shared.execute(.listRegionsRequest, expecting: WBGetAllBrandsResponse.self) { [weak self] result in
             switch result {

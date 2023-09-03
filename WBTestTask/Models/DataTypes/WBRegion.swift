@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Brand
+// MARK: - Region
 struct WBRegion: Codable {
     let brandID, title: String
     let thumbUrls: [String]

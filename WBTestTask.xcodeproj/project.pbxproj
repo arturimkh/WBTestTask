@@ -10,6 +10,7 @@
 		181147662AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181147652AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift */; };
 		1811476A2AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */; };
 		1811476C2AA3F0D9006A97B3 /* UserDefautsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811476B2AA3F0D9006A97B3 /* UserDefautsManager.swift */; };
+		1811476F2AA54981006A97B3 /* WBLikedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811476E2AA54981006A97B3 /* WBLikedButtonView.swift */; };
 		182330D62AA0B72C0019C065 /* WBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D52AA0B72C0019C065 /* WBRequest.swift */; };
 		182330D82AA0B7360019C065 /* WBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D72AA0B7360019C065 /* WBEndpoint.swift */; };
 		182330DA2AA0B7420019C065 /* WBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182330D92AA0B7420019C065 /* WBService.swift */; };
@@ -34,6 +35,7 @@
 		181147652AA32F54006A97B3 /* WBRegionPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegionPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRegionPhotoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		1811476B2AA3F0D9006A97B3 /* UserDefautsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefautsManager.swift; sourceTree = "<group>"; };
+		1811476E2AA54981006A97B3 /* WBLikedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBLikedButtonView.swift; sourceTree = "<group>"; };
 		182330D52AA0B72C0019C065 /* WBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRequest.swift; sourceTree = "<group>"; };
 		182330D72AA0B7360019C065 /* WBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBEndpoint.swift; sourceTree = "<group>"; };
 		182330D92AA0B7420019C065 /* WBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBService.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 				181147692AA3A561006A97B3 /* WBRegionPhotoCollectionViewCellViewModel.swift */,
 			);
 			path = RegionDetail;
+			sourceTree = "<group>";
+		};
+		1811476D2AA54962006A97B3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				1811476E2AA54981006A97B3 /* WBLikedButtonView.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		182330E32AA0C2610019C065 /* DataTypes */ = {
@@ -173,6 +183,7 @@
 		186D4CFD2AA0B5AB00596161 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1811476D2AA54962006A97B3 /* Other */,
 				181147632AA32EF4006A97B3 /* RegionsList */,
 				181147642AA32F07006A97B3 /* RegionDetail */,
 			);
@@ -305,6 +316,7 @@
 				182330E22AA0BF550019C065 /* WBRegion.swift in Sources */,
 				186D4CEA2AA0B45E00596161 /* SceneDelegate.swift in Sources */,
 				182330EE2AA1E5110019C065 /* WBRegionDetailViewViewModel.swift in Sources */,
+				1811476F2AA54981006A97B3 /* WBLikedButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

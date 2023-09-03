@@ -19,6 +19,8 @@ final class WBRegionPhotoCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addConstraints()
@@ -27,6 +29,8 @@ final class WBRegionPhotoCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    /// adding constraints and adding subView
     private func addConstraints(){
         contentView.addSubview(imageView)
         NSLayoutConstraint.activate([
@@ -36,6 +40,9 @@ final class WBRegionPhotoCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
         ])
     }
+    
+    /// configuring photo cell
+    /// - Parameter viewModel: region photo viewModel
     public func configure(with viewModel: WBRegionPhotoCollectionViewCellViewModel){
         viewModel.fetchImage { [weak self] result in
             switch result {

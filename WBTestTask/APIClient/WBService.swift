@@ -10,12 +10,19 @@ final class WBService{
     
     static let shared = WBService()
     
+    ///Private init to avoid making instances of class
     private init(){}
     
     enum WBServiceError: Error{
         case failedToCreateRequest
         case failedToGetData
     }
+    
+    /// Executng request
+    /// - Parameters:
+    ///   - request: our request
+    ///   - type: Generic type
+    ///   - completion: completion with 2 results Type and Error
     func execute<T: Codable>(
     _ request: WBRequest,
     expecting type:T.Type,
@@ -44,6 +51,9 @@ final class WBService{
         task.resume()
     }
     
+    /// Function to turn WBRequest into URLRequest
+    /// - Parameter wbRequest: WBRequest
+    /// - Returns: URLRequest
     private func request(from wbRequest: WBRequest) -> URLRequest? {
         guard let url = wbRequest.url else {return nil}
         var request = URLRequest(url:url)

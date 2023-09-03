@@ -7,10 +7,9 @@
 
 import UIKit
 
-class WBListRegionsCollectionViewCell: UICollectionViewCell {
+final class WBListRegionsCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentfier = "WBListRegionsCollectionViewCell"
-    
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -29,16 +28,14 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let likedButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 2.0
-        button.layer.borderColor = UIColor.black.cgColor
-        button.setTitleColor(.black, for: .normal)
+    private let likedButton: WBLikedButtonView = {
+       let button = WBLikedButtonView()
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         return button
     }()
+    
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .secondarySystemBackground
@@ -50,6 +47,7 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// adding constaints and adding subviews
     private func addConstraints(){
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
@@ -72,39 +70,35 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
 
         ])
     }
+    
     @objc
+    /// target of button
     private func didTapButton(){
         guard let labelText = nameLabel.text else {return}
-        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
-        switch flag{
-        case true:
-            likedButton.setTitle("Не понравилось", for: .normal)
-            MyUserDefaultsManager.shared.saveData(key: labelText, value: false)
-        case false:
-            likedButton.setTitle("Понравилось", for: .normal)
-            MyUserDefaultsManager.shared.saveData(key: labelText, value: true)
-        }
+        likedButton.switchButton(labelText: labelText)
     }
+    
+    /// cheking is liked or not
     public func isLiked(){
         guard let labelText = nameLabel.text else {return}
-        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
-        switch flag{
-        case true:
-            likedButton.setTitle("Понравилось", for: .normal)
-        case false:
-            likedButton.setTitle("Не понравилось", for: .normal)
-        }
+        likedButton.checkInfoAbout(labelText: labelText)
     }
-
+    
+    /// function before reusing imageView and label
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
         nameLabel.text = nil
     }
+    
+    /// function to work with darkMode
+    /// - Parameter previousTraitCollection: previousTraitCollection
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setUpLayer()
     }
+    
+    /// setting layer of cell 
     private func setUpLayer(){
         contentView.layer.cornerRadius = 10
         contentView.layer.shadowColor = UIColor.label.cgColor
@@ -112,6 +106,9 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowOffset = CGSize(width: -4, height: -4)
         contentView.layer.shadowOpacity = 0.3
     }
+    
+    /// Configuring our cell
+    /// - Parameter viewModel: single region view model cell
     public func configure(with viewModel: WBListRegionsCollectionViewCellViewModel){
         nameLabel.text = viewModel.regionName
         isLiked()

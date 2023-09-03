@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - AllRegions
 struct WBGetAllBrandsResponse: Codable {
     let brands: [WBRegion]
 }

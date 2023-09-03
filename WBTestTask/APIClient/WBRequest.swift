@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+///Class that describes all sorts of request
 final class WBRequest{
     
     private struct Constants{
@@ -26,11 +26,13 @@ final class WBRequest{
         }
         
         public let httpMethod = "GET"
-        
+        //MARK: - Init
         public init(endpoint: WBEndpoint) {
             self.endpoint = endpoint
         }
 }
+
 extension WBRequest{
+    /// get all regions
     static let listRegionsRequest = WBRequest(endpoint: .getBrands)
 }

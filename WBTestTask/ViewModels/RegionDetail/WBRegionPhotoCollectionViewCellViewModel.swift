@@ -9,9 +9,14 @@ import Foundation
 
 final class WBRegionPhotoCollectionViewCellViewModel{
     private let regionImageUrl:URL?
+    //MARK: - Init
+    
     init(regionImageUrl:URL?){
         self.regionImageUrl = regionImageUrl
     }
+    
+    /// Fetching Image 
+    /// - Parameter completion: completion with 2 results, Data and Error
     public func fetchImage(completion: @escaping (Result<Data, Error>) -> Void){
         //TODO: Сделать чтобы в image manager
         guard let url = regionImageUrl else {

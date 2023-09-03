@@ -26,9 +26,13 @@ final class WBRegionDetailViewViewModel: NSObject{
         }
         return urls
     }
+    //MARK: - Init
     init(region: WBRegion) {
         self.region = region
     }
+    
+    /// creating compositional layout section
+    /// - Returns: NSCollectionLayoutSection
     public func createImageGalerySection() -> NSCollectionLayoutSection{
 
         let item = NSCollectionLayoutItem(
@@ -55,6 +59,7 @@ final class WBRegionDetailViewViewModel: NSObject{
         return section
     }
 }
+//MARK: CollectionViewDataSource
 extension WBRegionDetailViewViewModel: UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -9,12 +9,17 @@ import UIKit
 
 
 protocol WBListRegionsViewDelegate: AnyObject{
+    
+    /// passing data between View and Controller
+    /// - Parameters:
+    ///   - listRegionsView: list of regions
+    ///   - region: selected region
     func wbListRegionsView(
         _ listRegionsView: WBListRegionsView,
         didSelectRegion region: WBRegion
     )
 }
-class WBListRegionsView: UIView {
+final class WBListRegionsView: UIView {
     
     weak var delegate: WBListRegionsViewDelegate?
     
@@ -37,6 +42,8 @@ class WBListRegionsView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +57,8 @@ class WBListRegionsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    /// adding constraints
     private func addConstraints(){
         addSubview(collectionView)
         addSubview(spinner)
@@ -65,12 +74,15 @@ class WBListRegionsView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
+    /// setting collectionView dataSource and delegate as ViewModel
     private func setUpCollectionView(){
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
     }
     
 }
+
 extension WBListRegionsView: WBListRegionsViewViewModelDelegate{
     
     /// after selection of single region, went to detail screen

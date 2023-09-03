@@ -14,6 +14,7 @@ final class WBRegionDetailViewController: UIViewController {
     
     private let detailView: WBRegionDetailView
     
+    //MARK: - Init
     init(viewModel: WBRegionDetailViewViewModel) {
         self.viewModel = viewModel
         self.detailView = WBRegionDetailView(frame:.zero,viewModel: viewModel)
@@ -36,6 +37,8 @@ final class WBRegionDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = viewModel.title
     }
+    
+    /// adding constraints
     private func addConstraints(){
         view.addSubview(detailView)
         NSLayoutConstraint.activate([

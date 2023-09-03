@@ -29,16 +29,16 @@ final class WBRegionDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let likedButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 2.0
-        button.layer.borderColor = UIColor.black.cgColor
-        button.setTitleColor(.black, for: .normal)
+    private let likedButton: WBLikedButtonView = {
+       let button = WBLikedButtonView()
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         return button
     }()
+    
+    //MARK: - Init
+    /// - Parameters:
+    ///   - frame: frame of view
+    ///   - viewModel: ViewModel of Detail region
     init(frame: CGRect, viewModel: WBRegionDetailViewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
@@ -60,42 +60,32 @@ final class WBRegionDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     @objc
+    /// target of button
     private func didTapButton(){
-        let labelText = viewModel.title
-        print(labelText)
-        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
-        switch flag{
-        case true:
-            likedButton.setTitle("Не понравилось", for: .normal)
-            MyUserDefaultsManager.shared.saveData(key: labelText, value: false)
-        case false:
-            likedButton.setTitle("Понравилось", for: .normal)
-            MyUserDefaultsManager.shared.saveData(key: labelText, value: true)
-        }
+        likedButton.switchButton(labelText: viewModel.title)
     }
     
+    /// cheking is liked or not
     public func isLiked(){
-        let labelText = viewModel.title
-        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
-        switch flag{
-        case true:
-            likedButton.setTitle("Понравилось", for: .normal)
-        case false:
-            likedButton.setTitle("Не понравилось", for: .normal)
-        }
+        likedButton.checkInfoAbout(labelText: viewModel.title)
     }
+
     
+    /// setting labels
     private func setLabel(){
         guard let currentText = viewsLabel.text else {return}
         viewsLabel.text = currentText + String(viewModel.viewsInfo)
     }
     
+    /// setting collectionView data source
     private func setUpCollectionView(){
         guard let collectionView = collectionView else {return}
         collectionView.dataSource = viewModel
     }
     
+    /// adding constraints
     private func addConstraints(){
         guard let collectionView = collectionView else {return}
         NSLayoutConstraint.activate([
@@ -121,6 +111,8 @@ final class WBRegionDetailView: UIView {
         ])
     }
     
+    /// creating CollectionView with compositional Layout
+    /// - Returns: UICollectionView
     private func createCollectionView() -> UICollectionView{
         let layout = UICollectionViewCompositionalLayout { [weak self] _, _ in
             return self?.viewModel.createImageGalerySection()

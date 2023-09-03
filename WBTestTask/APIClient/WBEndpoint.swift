@@ -6,6 +6,7 @@
 //
 
 import Foundation
+///Endpoint of our request
 @frozen enum WBEndpoint: String{
     case getBrands
 }
