@@ -13,7 +13,7 @@ final class WBRegionDetailViewViewModel: NSObject{
     private let region: WBRegion
     
     public var title: String {
-        region.title.uppercased()
+        region.title
     }
     public var viewsInfo: Int {
         region.viewsCount

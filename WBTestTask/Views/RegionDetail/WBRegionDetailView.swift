@@ -13,7 +13,7 @@ final class WBRegionDetailView: UIView {
     public var viewModel: WBRegionDetailViewViewModel
 
     private var collectionView: UICollectionView?
-        
+                
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
@@ -35,15 +35,15 @@ final class WBRegionDetailView: UIView {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 2.0
         button.layer.borderColor = UIColor.black.cgColor
-        button.setTitle("Не понравилось", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         return button
     }()
     init(frame: CGRect, viewModel: WBRegionDetailViewViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        
+        isLiked()
         let collectionView = createCollectionView()
         self.collectionView = collectionView
         
@@ -59,6 +59,31 @@ final class WBRegionDetailView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    @objc
+    private func didTapButton(){
+        let labelText = viewModel.title
+        print(labelText)
+        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
+        switch flag{
+        case true:
+            likedButton.setTitle("Не понравилось", for: .normal)
+            MyUserDefaultsManager.shared.saveData(key: labelText, value: false)
+        case false:
+            likedButton.setTitle("Понравилось", for: .normal)
+            MyUserDefaultsManager.shared.saveData(key: labelText, value: true)
+        }
+    }
+    
+    public func isLiked(){
+        let labelText = viewModel.title
+        let flag = MyUserDefaultsManager.shared.getData(forKey: labelText)
+        switch flag{
+        case true:
+            likedButton.setTitle("Понравилось", for: .normal)
+        case false:
+            likedButton.setTitle("Не понравилось", for: .normal)
+        }
     }
     
     private func setLabel(){

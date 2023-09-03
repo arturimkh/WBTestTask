@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /// Controller to show region detail information
 final class WBRegionDetailViewController: UIViewController {
 
@@ -20,7 +19,7 @@ final class WBRegionDetailViewController: UIViewController {
         self.detailView = WBRegionDetailView(frame:.zero,viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -114,6 +114,7 @@ class WBListRegionsCollectionViewCell: UICollectionViewCell {
     }
     public func configure(with viewModel: WBListRegionsCollectionViewCellViewModel){
         nameLabel.text = viewModel.regionName
+        isLiked()
         viewModel.fetchImage { [weak self] result in
             switch result {
             case .success(let data):

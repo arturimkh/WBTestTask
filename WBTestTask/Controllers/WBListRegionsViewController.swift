@@ -12,13 +12,17 @@ import UIKit
 final class WBListRegionsViewController: UIViewController {
     
     private let wbListRegionsView = WBListRegionsView()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addConstraints()
-        wbListRegionsView.delegate = self
         title = "Регионы России"
         view.backgroundColor = .systemBackground
+        wbListRegionsView.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        wbListRegionsView.collectionView.reloadData()
     }
     private func addConstraints(){
         view.addSubview(wbListRegionsView)
@@ -30,6 +34,7 @@ final class WBListRegionsViewController: UIViewController {
         ])
     }
 }
+
 extension WBListRegionsViewController:WBListRegionsViewDelegate{
     
     func wbListRegionsView(_ listRegionsView: WBListRegionsView, didSelectRegion region: WBRegion) {
@@ -38,6 +43,6 @@ extension WBListRegionsViewController:WBListRegionsViewDelegate{
         let detailVC = WBRegionDetailViewController(viewModel: viewModel)
         navigationController?.pushViewController(detailVC, animated: true)
     }
-    
 }
+
 

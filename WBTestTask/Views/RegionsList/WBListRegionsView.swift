@@ -69,6 +69,7 @@ class WBListRegionsView: UIView {
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
     }
+    
 }
 extension WBListRegionsView: WBListRegionsViewViewModelDelegate{
     
